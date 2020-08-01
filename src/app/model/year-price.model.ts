@@ -5,4 +5,5 @@ export interface IYearPrice{
 export interface IRangePercentage{
     yearRange: string;
     percentageChanged: number;
+    cagr: number;
 }

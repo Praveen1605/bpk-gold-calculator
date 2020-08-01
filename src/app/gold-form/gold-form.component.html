@@ -32,12 +32,15 @@
                         <tr>
                             <th>YearS</th>
                             <th>Change in Percentage</th>
+                            <th>CAGR</th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-list>
                         <tr>
                             <td class="to-align-text-center">{{list.yearRange}}</td>
                             <td class="to-align-text-center" [ngStyle]="{color: list.percentageChanged >= averagePercentageIncreased?'green':'red'}">{{list.percentageChanged | number : '1.2-2' }} %</td>
+                            <td class="to-align-text-center">{{list.cagr | number : '1.2-2' }} %</td>
+                            <!-- <td class="to-align-text-center" [ngStyle]="{color: list.percentageChanged >= averagePercentageIncreased?'green':'red'}">{{list.cagr}} %</td> -->
                         </tr>
                     </ng-template>
                 </p-table>

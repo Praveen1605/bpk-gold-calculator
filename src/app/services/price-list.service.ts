@@ -251,9 +251,12 @@ export class PriceListService{
             for(let i = 0; i < this.totalYearsCount-1 && i+value< this.totalYearsCount; i++){
                 const yearRange : string = this.priceListing[i].year + " - " + this.priceListing[(i+value)].year;
                 const percentageChanged : number = (((this.priceListing[(i+value)].price/this.priceListing[i].price) * 100)-100);
+                const tempCagr1 : number = (this.priceListing[(i+value)].price/this.priceListing[i].price);
+                const tempCagr2 : number = Math.pow(tempCagr1,(1/(value-1)));
                 this.yearPercentage.push({
                     yearRange:yearRange,
-                    percentageChanged:percentageChanged
+                    percentageChanged:percentageChanged,
+                    cagr:tempCagr2
                 });
             }
         }
