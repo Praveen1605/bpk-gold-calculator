@@ -1,1 +1,51 @@
-<p>gold-form works!</p>
+<section>
+    <article>
+        <button type="button" pButton icon="pi pi-chevron-up" (click)="openPrev()"></button>
+        <button type="button" pButton icon="pi pi-chevron-down" (click)="openNext()"></button>
+        <p-accordion [activeIndex]="index">
+            <p-accordionTab header="Gold Price By Year">
+                <p-table [value]="priceList">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Year</th>
+                            <th>1 Gram</th>
+                            <th>8 Gram ( 1 pound)</th>
+                            <th>10 Gram</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-list>
+                        <tr>
+                            <td class="to-align-text-center">{{list.year}}</td>
+                            <td class="to-align-text-center">{{getGramValue(list.price)}}</td>
+                            <td class="to-align-text-center">{{getPoundValue(list.price)}}</td>
+                            <td class="to-align-text-center">{{list.price}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-accordionTab>
+            <p-accordionTab header="Percentage increased over the Years">
+                <span class="to-align-dropdown">
+                <p-dropdown class="tempClass" [options]="yearDifferenceDropdown" (onChange)="onValueChange()" [(ngModel)]="selectedYearRange" optionLabel="label" [showClear]="false"></p-dropdown></span>
+                <!-- <p-dropdown [options]="yearDifferenceDropdown" optionLabel="label"></p-dropdown> -->
+                <div class="to-align-text-center padding-bottom" [ngStyle]="{color: averagePercentageIncreased >= 0?'green':'red'}">Price Of Increased Percentage : {{averagePercentageIncreased | number : '1.2-2'}}</div>
+                <p-table [value]="percentageList">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>YearS</th>
+                            <th>Change in Percentage</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-list>
+                        <tr>
+                            <td class="to-align-text-center">{{list.yearRange}}</td>
+                            <td class="to-align-text-center" [ngStyle]="{color: list.percentageChanged >= 0?'green':'red'}">{{list.percentageChanged | number : '1.2-2' }} %</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-accordionTab>
+            <p-accordionTab header="Header 3">
+                Content 3    
+            </p-accordionTab>
+        </p-accordion>
+    </article>
+</section>
