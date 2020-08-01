@@ -26,7 +26,6 @@
             <p-accordionTab header="Percentage increased over the Years">
                 <span class="to-align-dropdown">
                 <p-dropdown class="tempClass" [options]="yearDifferenceDropdown" (onChange)="onValueChange()" [(ngModel)]="selectedYearRange" optionLabel="label" [showClear]="false"></p-dropdown></span>
-                <!-- <p-dropdown [options]="yearDifferenceDropdown" optionLabel="label"></p-dropdown> -->
                 <div class="to-align-text-center padding-bottom" [ngStyle]="{color: averagePercentageIncreased >= 0?'green':'red'}">Price Of Increased Percentage : {{averagePercentageIncreased | number : '1.2-2'}}</div>
                 <p-table [value]="percentageList">
                     <ng-template pTemplate="header">
@@ -38,7 +37,7 @@
                     <ng-template pTemplate="body" let-list>
                         <tr>
                             <td class="to-align-text-center">{{list.yearRange}}</td>
-                            <td class="to-align-text-center" [ngStyle]="{color: list.percentageChanged >= 0?'green':'red'}">{{list.percentageChanged | number : '1.2-2' }} %</td>
+                            <td class="to-align-text-center" [ngStyle]="{color: list.percentageChanged >= averagePercentageIncreased?'green':'red'}">{{list.percentageChanged | number : '1.2-2' }} %</td>
                         </tr>
                     </ng-template>
                 </p-table>
