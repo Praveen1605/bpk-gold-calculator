@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PriceListService } from '../services/price-list.servie';
+import { PriceListService } from '../services/price-list.service';
 import { IYearPrice, IRangePercentage } from '../model/year-price.model';
 import { SelectItem } from 'primeng/api';
+import { LiveGoldValueService } from '../services/live-gold-value.service';
 @Component({
   selector: 'app-gold-form',
   templateUrl: './gold-form.component.html',
@@ -9,7 +10,7 @@ import { SelectItem } from 'primeng/api';
 })
 export class GoldFormComponent implements OnInit {
 
-  constructor(private priceListService:PriceListService) { }
+  constructor(private priceListService:PriceListService,private liveGoldValueService:LiveGoldValueService) { }
 
   public index: number = -1;
   public selectedYearRange: SelectItem = Object.assign({});
